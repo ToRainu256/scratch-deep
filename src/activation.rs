@@ -3,7 +3,7 @@ use ndarray::{OwnedRepr, prelude::*};
 
 pub fn step_funtion(x: Array1<f64>) -> ArrayBase<OwnedRepr<f64>,Dim<[usize;1]>>
 {
-   let x = x.mapv(|a| ((a > 0.0) as u64)as f64);
+   let x = x.mapv(|a| ((a > 0.0) as u64)as f64).to_owend();
    x
 }
 
