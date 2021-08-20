@@ -50,6 +50,12 @@ pub fn OR(x1: f64, x2: f64) -> u64 {
     1
 }
 
+pub fn XOR(x1: f64, x2: f64) -> u64 {
+    let s1 = NAND(x1, x2);
+    let s2 = OR(x1, x2);
+    AND(s1 as f64, s2 as f64)
+}
+
 #[cfg(test)]
 mod test {
     use super::*;
@@ -82,5 +88,12 @@ mod test {
         assert_eq!(OR(1., 0.), 1);
         assert_eq!(OR(1., 1.), 1);
         assert_eq!(OR(0., 1.), 1);
+    }
+    #[test]
+    fn testing_XOR() {
+        assert_eq!(XOR(0., 0.), 0);
+        assert_eq!(XOR(1., 0.), 1);
+        assert_eq!(XOR(1., 1.), 0);
+        assert_eq!(XOR(0., 1.), 1);
     }
 }
