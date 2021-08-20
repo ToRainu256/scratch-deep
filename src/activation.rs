@@ -3,8 +3,14 @@ use ndarray::{OwnedRepr, prelude::*};
 
 pub fn step_funtion(x: Array1<f64>) -> ArrayBase<OwnedRepr<f64>,Dim<[usize;1]>>
 {
-   let x = x.mapv(|a| ((a > 0.0) as u64)as f64).to_owend();
+   let x = x.mapv(|a| ((a > 0.0) as u64)as f64);
    x
+}
+
+pub fn sigmod(x: Array1<f64>) -> ArrayBase<OwnedRepr<f64>,Dim<[usize;1]>>
+{
+    let x = x.mapv(|a| 1.0/(1.0 + (-1.0*a).exp()));
+    x
 }
 
 
